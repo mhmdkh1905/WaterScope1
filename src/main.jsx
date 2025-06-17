@@ -1,35 +1,37 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import App from './App';
-import Dashboard from './sections/Dashboard';
-import Overview from './sections/Overview';
-import ARIMAForecast from './sections/ARIMAForecast';
-import PCAAnalysis from './sections/PCAAnalysis';
-import KrigingModel from './sections/KrigingModel';
-import TrendAnalysis from './sections/TrendAnalysis';
-import ClimateImpact from './sections/ClimateImpact';
+// src/main.jsx
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+
+import Home from "./components/Home";
+import OverView from "./components/OverView";
+import ArimaForcast from "./components/ArimaForcast";
+import PCAAnalysis from "./components/PCAAnalysis";
+import TrendAnalysis from "./components/TrendAnalysis";
+import ClimateImpact from "./components/ClimateImpact";
+import KrigingModel from "./components/KrigingModel";
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    children: [
-      {
-        path: 'dashboard',
-        element: <Dashboard />,
-        children: [
-          { index: true, element: <Overview /> },
-          { path: 'overview', element: <Overview /> },
-          { path: 'arima-forecast', element: <ARIMAForecast /> },
-          { path: 'pca-analysis', element: <PCAAnalysis /> },
-          { path: 'kriging-model', element: <KrigingModel /> },
-          { path: 'trend-analysis', element: <TrendAnalysis /> },
-          { path: 'climate-impact', element: <ClimateImpact /> },
-        ],
-      },
-    ],
-  },
+	{
+		path: "/",
+		element: <App />,
+		children: [
+			{ path: "/", element: <Home /> },
+			{ path: "/home", element: <Home /> },
+			{ path: "/overView", element: <OverView /> },
+			{ path: "/arimaForcast", element: <ArimaForcast /> },
+			{ path: "/PCAAnalysis", element: <PCAAnalysis /> },
+			{ path: "/trendAnalysis", element: <TrendAnalysis /> },
+			{ path: "/climateImpact", element: <ClimateImpact /> },
+			{ path: "/krigingModel", element: <KrigingModel /> },
+		],
+	},
 ]);
 
-export default function Main() {
-  return <RouterProvider router={router} />;
-}
+createRoot(document.getElementById("root")).render(
+	<React.StrictMode>
+		<RouterProvider router={router} />
+	</React.StrictMode>
+);

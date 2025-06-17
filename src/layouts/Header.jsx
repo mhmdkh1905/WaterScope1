@@ -6,12 +6,12 @@ const Header = () => {
   const location = useLocation();
   
   const navItems = [
-    { id: 'overview', path: 'overview', label: 'Overview', icon: Waves },
-    { id: 'arima', path: 'arima-forecast', label: 'ARIMA Forecast', icon: TrendingUp },
-    { id: 'pca', path: 'pca-analysis', label: 'PCA Analysis', icon: BarChart3 },
-    { id: 'kriging', path: 'kriging-model', label: 'Kriging Model', icon: Map },
-    { id: 'trends', path: 'trend-analysis', label: 'Trend Analysis', icon: Activity },
-    { id: 'climate', path: 'climate-impact', label: 'Climate Impact', icon: CloudRain },
+    { id: 'overView', path: 'overView', label: 'Overview', icon: Waves },
+    { id: 'arima', path: 'arimaForcast', label: 'ARIMA Forecast', icon: TrendingUp },
+    { id: 'pca', path: 'PCAAnalysis', label: 'PCA Analysis', icon: BarChart3 },
+    { id: 'kriging', path: 'krigingModel', label: 'Kriging Model', icon: Map },
+    { id: 'trends', path: 'trendAnalysis', label: 'Trend Analysis', icon: Activity },
+    { id: 'climate', path: 'climateImpact', label: 'Climate Impact', icon: CloudRain },
   ];
 
   return (
@@ -21,7 +21,7 @@ const Header = () => {
           <div className="flex items-center space-x-3">
             <Waves className="w-8 h-8 text-blue-600" />
             <h1 className="text-2xl font-bold text-gray-900">
-              Sea of Galilee Ecosystem Monitor
+              WaterScope
             </h1>
           </div>
           
@@ -29,7 +29,7 @@ const Header = () => {
             {navItems.map((item) => (
               <Link
                 key={item.id}
-                to={`/dashboard/${item.path}`}
+                to={`/${item.path}`}
                 className={`flex items-center px-3 py-2 rounded-lg text-sm ${
                   location.pathname.includes(item.path)
                     ? 'bg-blue-100 text-blue-700 font-medium'
@@ -41,10 +41,6 @@ const Header = () => {
               </Link>
             ))}
           </nav>
-
-          <div className="text-sm text-gray-500">
-            Last updated: {new Date().toLocaleDateString()}
-          </div>
         </div>
       </div>
     </header>
