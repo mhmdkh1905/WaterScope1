@@ -1,8 +1,12 @@
-function App() {
+// App.jsx
+import { Outlet } from 'react-router-dom';
+
+const App = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-100 text-xl text-blue-900">
-      Hello from Tailwind + React!
+    <div className="app">
+      <Outlet />
     </div>
   );
-}
+};
+
 export default App;

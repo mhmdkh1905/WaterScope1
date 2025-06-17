@@ -1,21 +1,54 @@
 // src/components/Header.jsx
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom';
+import { TrendingUp, BarChart3, Map, Activity, CloudRain, Waves } from 'lucide-react';
 
-function Header() {
+const Header = () => {
+  const location = useLocation();
+  
+  const navItems = [
+    { id: 'overview', path: 'overview', label: 'Overview', icon: Waves },
+    { id: 'arima', path: 'arima-forecast', label: 'ARIMA Forecast', icon: TrendingUp },
+    { id: 'pca', path: 'pca-analysis', label: 'PCA Analysis', icon: BarChart3 },
+    { id: 'kriging', path: 'kriging-model', label: 'Kriging Model', icon: Map },
+    { id: 'trends', path: 'trend-analysis', label: 'Trend Analysis', icon: Activity },
+    { id: 'climate', path: 'climate-impact', label: 'Climate Impact', icon: CloudRain },
+  ];
+
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-blue-700">WaterScope</Link>
-        <nav className="space-x-4 text-sm text-blue-600">
-          <Link to="/map" className="hover:underline">Map</Link>
-          <Link to="/timeseries" className="hover:underline">Time Series</Link>
-          <Link to="/stats" className="hover:underline">Stats</Link>
-          <Link to="/models" className="hover:underline">Models</Link>
-          <Link to="/data" className="hover:underline">Data</Link>
-        </nav>
+    <header className="bg-white shadow-sm border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <Waves className="w-8 h-8 text-blue-600" />
+            <h1 className="text-2xl font-bold text-gray-900">
+              Sea of Galilee Ecosystem Monitor
+            </h1>
+          </div>
+          
+          <nav className="hidden md:flex space-x-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.id}
+                to={`/dashboard/${item.path}`}
+                className={`flex items-center px-3 py-2 rounded-lg text-sm ${
+                  location.pathname.includes(item.path)
+                    ? 'bg-blue-100 text-blue-700 font-medium'
+                    : 'text-gray-600 hover:bg-gray-100'
+                }`}
+              >
+                <item.icon className="w-5 h-5 mr-2" />
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="text-sm text-gray-500">
+            Last updated: {new Date().toLocaleDateString()}
+          </div>
+        </div>
       </div>
     </header>
   );
-}
+};
+
 export default Header;

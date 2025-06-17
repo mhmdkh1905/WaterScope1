@@ -1,25 +1,35 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import MapPage from "./pages/MapPage";
-import TimeSeriesPage from "./pages/TimeSeriesPage";
-import StatsPage from "./pages/StatsPage";
-import ModelsPage from "./pages/ModelsPage";
-import DataPage from "./pages/DataPage";
-import "./index.css";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import App from './App';
+import Dashboard from './sections/Dashboard';
+import Overview from './sections/Overview';
+import ARIMAForecast from './sections/ARIMAForecast';
+import PCAAnalysis from './sections/PCAAnalysis';
+import KrigingModel from './sections/KrigingModel';
+import TrendAnalysis from './sections/TrendAnalysis';
+import ClimateImpact from './sections/ClimateImpact';
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/map" element={<MapPage />} />
-        <Route path="/timeseries" element={<TimeSeriesPage />} />
-        <Route path="/stats" element={<StatsPage />} />
-        <Route path="/models" element={<ModelsPage />} />
-        <Route path="/data" element={<DataPage />} />
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
-);
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      {
+        path: 'dashboard',
+        element: <Dashboard />,
+        children: [
+          { index: true, element: <Overview /> },
+          { path: 'overview', element: <Overview /> },
+          { path: 'arima-forecast', element: <ARIMAForecast /> },
+          { path: 'pca-analysis', element: <PCAAnalysis /> },
+          { path: 'kriging-model', element: <KrigingModel /> },
+          { path: 'trend-analysis', element: <TrendAnalysis /> },
+          { path: 'climate-impact', element: <ClimateImpact /> },
+        ],
+      },
+    ],
+  },
+]);
+
+export default function Main() {
+  return <RouterProvider router={router} />;
+}
