@@ -21,7 +21,7 @@ const COLORS = ["#3b82f6", "#f59e0b", "#10b981", "#a855f7"];
 
 const ImpactPieChart = () => {
 	return (
-		<div className="bg-white p-6 rounded-xl shadow-lg">
+		<section>
 			<h3 className="text-xl font-semibold text-gray-800 mb-4">
 				Impact Factor Distribution
 			</h3>
@@ -52,7 +52,7 @@ const ImpactPieChart = () => {
 					<Legend />
 				</PieChart>
 			</ResponsiveContainer>
-		</div>
+		</section>
 	);
 };
 

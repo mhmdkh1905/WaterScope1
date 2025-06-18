@@ -4,7 +4,9 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App";
+import 'leaflet/dist/leaflet.css';
 
+//Components
 import Home from "./components/Home";
 import OverView from "./components/OverView";
 import ArimaForcast from "./components/ArimaForcast";
@@ -12,6 +14,10 @@ import PCAAnalysis from "./components/PCAAnalysis";
 import TrendAnalysis from "./components/TrendAnalysis";
 import ClimateImpact from "./components/ClimateImpact";
 import KrigingModel from "./components/KrigingModel";
+
+//Pages
+import MapPage from "./pages/MapPage";
+
 
 const router = createBrowserRouter([
 	{
@@ -26,6 +32,7 @@ const router = createBrowserRouter([
 			{ path: "/trendAnalysis", element: <TrendAnalysis /> },
 			{ path: "/climateImpact", element: <ClimateImpact /> },
 			{ path: "/krigingModel", element: <KrigingModel /> },
+			{ path: "/map", element: <MapPage /> },
 		],
 	},
 ]);
