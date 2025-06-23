@@ -13,7 +13,7 @@ import ArimaForcast from "./components/ArimaForcast";
 import PCAAnalysis from "./components/PCAAnalysis";
 import TrendAnalysis from "./components/TrendAnalysis";
 import ClimateImpact from "./components/ClimateImpact";
-import KrigingModel from "./components/KrigingModel";
+import Data from "./components/Data";
 
 //Pages
 import MapPage from "./pages/MapPage";
@@ -31,8 +31,8 @@ const router = createBrowserRouter([
 			{ path: "/PCAAnalysis", element: <PCAAnalysis /> },
 			{ path: "/trendAnalysis", element: <TrendAnalysis /> },
 			{ path: "/climateImpact", element: <ClimateImpact /> },
-			{ path: "/krigingModel", element: <KrigingModel /> },
 			{ path: "/map", element: <MapPage /> },
+			{ path: "/data", element: <Data /> },
 		],
 	},
 ]);

@@ -14,7 +14,6 @@ import WaterLevelOverview from "../charts/WaterLevelOverview";
 import RainfallOverview from "../charts/RainfallOverview";
 import { StatCard, ChartCard } from "../cards/StatCardsOverView";
 import MiniForecastCard from "../cards/MiniForecastCard";
-import MiniMapCard from "../cards/MiniMapCard";
 
 const OverView = () => {
 	return (
@@ -64,9 +63,6 @@ const OverView = () => {
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
 				<div className="md:col-span-2">
 					<RainfallOverview />
-				</div>
-				<div>
-					<MiniMapCard />
 				</div>
 			</div>
 		</div>
